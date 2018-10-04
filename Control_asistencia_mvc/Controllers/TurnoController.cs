@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,9 +19,20 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: Turno/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var turnos = db.turnos.Find(id);
+            if (turnos == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(turnos);
         }
 
         // GET: Turno/Create

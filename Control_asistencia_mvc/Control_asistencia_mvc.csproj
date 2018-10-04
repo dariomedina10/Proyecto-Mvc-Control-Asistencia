@@ -282,6 +282,7 @@
     <Content Include="Views\Departamento\Details.cshtml" />
     <Content Include="Views\Empleado\Details.cshtml" />
     <Content Include="Views\TipoEmpleado\Details.cshtml" />
+    <Content Include="Views\Turno\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
