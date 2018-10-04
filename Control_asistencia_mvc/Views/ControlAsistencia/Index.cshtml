@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Control_asistencia_mvc.control_asistencia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_entrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_salida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empleados.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.turnos.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in (List<control_asistencia>)ViewBag.controlasistencia) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_entrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_salida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empleados.nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.turnos.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_control }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_control }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_control })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dab0a928b2f44ff69e6faee3b3bee227" Name="Diagram1">
+        <EntityTypeShape EntityType="AsistenciaModel.cargos" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AsistenciaModel.control_asistencia" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AsistenciaModel.departamentos" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AsistenciaModel.empleados" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AsistenciaModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AsistenciaModel.tipo_empleado" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AsistenciaModel.turnos" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="AsistenciaModel.FK_empleados_cargos" ManuallyRouted="false" />
+        <AssociationConnector Association="AsistenciaModel.FK__control_a__id_em__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="AsistenciaModel.FK__control_a__id_tu__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="AsistenciaModel.FK_empleados_departamentos" ManuallyRouted="false" />
+        <AssociationConnector Association="AsistenciaModel.FK_empleados_tipo_empleado" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

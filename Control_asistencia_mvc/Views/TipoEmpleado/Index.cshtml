@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Control_asistencia_mvc.tipo_empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Listado de Tipos de Empleos
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in (List<tipo_empleado>)ViewBag.tipoempleado) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_tipo_empl }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_tipo_empl }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_tipo_empl })
+        </td>
+    </tr>
+}
+
+</table>

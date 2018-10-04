@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Control_asistencia_mvc.Models.Cargos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*Html.DisplayNameFor(model => model.descripcion)*@
+            Listado De Cargos
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in (List<cargos>)ViewBag.Cargos)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_cargo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_cargo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_cargo })
+            </td>
+        </tr>
+    }
+

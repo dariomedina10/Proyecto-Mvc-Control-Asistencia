@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Control_asistencia_mvc.turnos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Listado de Turnos Disponibles
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in (List<turnos>)ViewBag.turnos) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_turno }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_turno }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_turno })
+        </td>
+    </tr>
+}
+
+</table>
