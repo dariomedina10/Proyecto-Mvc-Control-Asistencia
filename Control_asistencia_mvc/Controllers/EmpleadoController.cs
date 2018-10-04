@@ -31,13 +31,17 @@ namespace Control_asistencia_mvc.Controllers
 
         // POST: Empleado/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(empleados empleados)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.empleados.Add(empleados);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(empleados);
             }
             catch
             {

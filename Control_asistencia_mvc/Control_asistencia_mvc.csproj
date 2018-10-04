@@ -274,6 +274,7 @@
     <Content Include="Views\Cargo\Create.cshtml" />
     <Content Include="Views\ControlAsistencia\Create.cshtml" />
     <Content Include="Views\Departamento\Create.cshtml" />
+    <Content Include="Views\Empleado\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
