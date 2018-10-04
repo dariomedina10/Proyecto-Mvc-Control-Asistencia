@@ -285,6 +285,7 @@
     <Content Include="Views\Turno\Details.cshtml" />
     <Content Include="Views\Cargo\Edit.cshtml" />
     <Content Include="Views\ControlAsistencia\Edit.cshtml" />
+    <Content Include="Views\Departamento\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
