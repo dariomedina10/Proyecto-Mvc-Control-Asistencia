@@ -280,6 +280,7 @@
     <Content Include="Views\Cargo\Details.cshtml" />
     <Content Include="Views\ControlAsistencia\Details.cshtml" />
     <Content Include="Views\Departamento\Details.cshtml" />
+    <Content Include="Views\Empleado\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
