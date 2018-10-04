@@ -30,13 +30,17 @@ namespace Control_asistencia_mvc.Controllers
 
         // POST: ControlAsistencia/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(control_asistencia control_Asistencia)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.control_asistencia.Add(control_Asistencia);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(control_Asistencia);
             }
             catch
             {
