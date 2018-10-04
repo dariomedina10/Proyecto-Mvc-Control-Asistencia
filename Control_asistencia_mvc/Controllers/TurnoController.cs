@@ -31,13 +31,17 @@ namespace Control_asistencia_mvc.Controllers
 
         // POST: Turno/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(turnos turnos)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.turnos.Add(turnos);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(turnos);
             }
             catch
             {
