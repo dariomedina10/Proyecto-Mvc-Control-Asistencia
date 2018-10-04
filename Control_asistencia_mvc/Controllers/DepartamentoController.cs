@@ -30,13 +30,17 @@ namespace Control_asistencia_mvc.Controllers
 
         // POST: Departamento/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(departamentos departamentos)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.departamentos.Add(departamentos);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(departamentos);
             }
             catch
             {
