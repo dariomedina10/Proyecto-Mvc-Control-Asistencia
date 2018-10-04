@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,9 +19,19 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: Cargo/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            return View();
+             if (id == null) {
+                return new HttpStatusCodeResult (HttpStatusCode.BadRequest);
+            }
+
+            var cargos = db.cargos.Find(id);
+            if (cargos == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(cargos);
         }
 
         // GET: Cargo/Create

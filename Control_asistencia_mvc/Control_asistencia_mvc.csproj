@@ -277,6 +277,7 @@
     <Content Include="Views\Empleado\Create.cshtml" />
     <Content Include="Views\TipoEmpleado\Create.cshtml" />
     <Content Include="Views\Turno\Create.cshtml" />
+    <Content Include="Views\Cargo\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
