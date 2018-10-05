@@ -287,6 +287,7 @@
     <Content Include="Views\ControlAsistencia\Edit.cshtml" />
     <Content Include="Views\Departamento\Edit.cshtml" />
     <Content Include="Views\Empleado\Edit.cshtml" />
+    <Content Include="Views\TipoEmpleado\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
