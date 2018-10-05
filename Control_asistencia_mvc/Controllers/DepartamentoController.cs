@@ -99,25 +99,47 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: Departamento/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var departamentos = db.departamentos.Find(id);
+            if (departamentos == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(departamentos);
         }
 
         // POST: Departamento/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, departamentos departamentos)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    departamentos = db.departamentos.Find(id);
+                    if (departamentos == null)
+                    {
+                        return HttpNotFound();
+                    }
 
-                return RedirectToAction("Index");
+                    db.departamentos.Remove(departamentos);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(departamentos);
             }
             catch
             {
-                return View();
+                return View(departamentos);
             }
+
         }
     }
 }
