@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -62,25 +63,41 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: Empleado/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var empleados = db.empleados.Find(id);
+            if (empleados == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(empleados);
         }
 
         // POST: Empleado/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(empleados empleados)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(empleados).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(empleados);
             }
             catch
             {
-                return View();
+                return View(empleados);
             }
+
         }
 
         // GET: Empleado/Delete/5
