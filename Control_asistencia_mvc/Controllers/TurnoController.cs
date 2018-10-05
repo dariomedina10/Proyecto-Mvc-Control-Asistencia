@@ -101,25 +101,48 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: Turno/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var turnos = db.turnos.Find(id);
+            if (turnos == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(turnos);
         }
 
         // POST: Turno/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, turnos turnos)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    turnos = db.turnos.Find(id);
+                    if (turnos == null)
+                    {
+                        return HttpNotFound();
+                    }
 
-                return RedirectToAction("Index");
+                    db.turnos.Remove(turnos);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(turnos);
             }
             catch
             {
-                return View();
+                return View(turnos);
             }
+
+
         }
     }
 }
