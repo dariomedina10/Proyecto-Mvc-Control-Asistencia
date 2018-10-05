@@ -99,24 +99,46 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: Cargo/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var cargos = db.cargos.Find(id);
+            if (cargos == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(cargos);
+
         }
 
         // POST: Cargo/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, cargos cargos)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    cargos = db.cargos.Find(id);
+                    if (cargos == null)
+                    {
+                        return HttpNotFound();
+                    }
 
-                return RedirectToAction("Index");
+                    db.cargos.Remove(cargos);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(cargos);
             }
             catch
             {
-                return View();
+                return View(cargos);
             }
         }
     }

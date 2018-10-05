@@ -289,6 +289,7 @@
     <Content Include="Views\Empleado\Edit.cshtml" />
     <Content Include="Views\TipoEmpleado\Edit.cshtml" />
     <Content Include="Views\Turno\Edit.cshtml" />
+    <Content Include="Views\Cargo\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
