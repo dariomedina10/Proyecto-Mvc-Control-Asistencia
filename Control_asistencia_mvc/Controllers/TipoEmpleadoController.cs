@@ -100,24 +100,47 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: TipoEmpleado/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var tipo_empleado = db.tipo_empleado.Find(id);
+            if (tipo_empleado == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(tipo_empleado);
         }
 
         // POST: TipoEmpleado/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, tipo_empleado tipo_Empleado)
         {
+
+
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    tipo_Empleado = db.tipo_empleado.Find(id);
+                    if (tipo_Empleado == null)
+                    {
+                        return HttpNotFound();
+                    }
 
-                return RedirectToAction("Index");
+                    db.tipo_empleado.Remove(tipo_Empleado);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(tipo_Empleado);
             }
             catch
             {
-                return View();
+                return View(tipo_Empleado);
             }
         }
     }
