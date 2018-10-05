@@ -1,0 +1,72 @@
+﻿@model Control_asistencia_mvc.empleados
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Está Seguro de Borrar el registro?</h3>
+<div>
+    <h4>empleados</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apelli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apelli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cargos.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cargos.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departamentos.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamentos.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_empleado.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_empleado.descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

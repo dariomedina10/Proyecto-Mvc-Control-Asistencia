@@ -101,24 +101,45 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: Empleado/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var empleados = db.empleados.Find(id);
+            if (empleados == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(empleados);
         }
 
         // POST: Empleado/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, empleados empleados)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    empleados = db.empleados.Find(id);
+                    if (empleados == null)
+                    {
+                        return HttpNotFound();
+                    }
 
-                return RedirectToAction("Index");
+                    db.empleados.Remove(empleados);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(empleados);
             }
             catch
             {
-                return View();
+                return View(empleados);
             }
         }
     }

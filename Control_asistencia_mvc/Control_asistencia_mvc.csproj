@@ -292,6 +292,7 @@
     <Content Include="Views\Cargo\Delete.cshtml" />
     <Content Include="Views\ControlAsistencia\Delete.cshtml" />
     <Content Include="Views\Departamento\Delete.cshtml" />
+    <Content Include="Views\Empleado\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
