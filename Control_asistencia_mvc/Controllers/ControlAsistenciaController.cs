@@ -99,25 +99,48 @@ namespace Control_asistencia_mvc.Controllers
         }
 
         // GET: ControlAsistencia/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var control_asistencia = db.control_asistencia.Find(id);
+            if (control_asistencia == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(control_asistencia);
+
         }
 
         // POST: ControlAsistencia/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int? id, control_asistencia control_Asistencia)
         {
             try
             {
-                // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    control_Asistencia = db.control_asistencia.Find(id);
+                    if (control_Asistencia == null)
+                    {
+                        return HttpNotFound();
+                    }
 
-                return RedirectToAction("Index");
+                    db.control_asistencia.Remove(control_Asistencia);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(control_Asistencia);
             }
             catch
             {
-                return View();
+                return View(control_Asistencia);
             }
-        }
     }
 }
+    }
+
